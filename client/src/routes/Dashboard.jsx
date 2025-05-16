@@ -1,7 +1,12 @@
 import React from "react";
+import Button from "../components/Button";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <Button title="Home" />
+    </>
+  );
 };
 
 export default Dashboard;

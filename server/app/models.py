@@ -7,6 +7,7 @@ class User(db.Model, UserMixin):
     first_name = Column(String(150), nullable=False)
     last_name = Column(String(150), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
+    password = Column(String(255), nullable=False, unique=True)
     is_admin = Column(Boolean, nullable=False, default=False)
     
     def serialize(self):

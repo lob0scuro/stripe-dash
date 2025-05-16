@@ -16,6 +16,8 @@ def create_app(config_class=Config):
     
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp)
+    from app.read import bp as read_bp
+    app.register_blueprint(read_bp)
     
     @login_manager.user_loader
     def load_user(id):

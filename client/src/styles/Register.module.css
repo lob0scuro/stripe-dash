@@ -1,0 +1,28 @@
+.registerHeader {
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.registerForm div {
+  width: 100%;
+  display: flex;
+  gap: 42px;
+  justify-content: space-between;
+}
+.registerForm div:first-child {
+  gap: 22px;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+.registerForm button {
+  margin-top: 32px;
+}

@@ -46,11 +46,11 @@ def login():
             print("Error: empty fields not allowed during login")
             return jsonify(error="All fields required for login"), 400
         user = User.query.get(id)
-        if not check_password_hash(password, user.password):
+        if not check_password_hash(user.password, password):
             print("Invalid credentials given during login process")
             return jsonify(error="Invalid credientiols, please check inputs and try again"), 401
         login_user(user)
-        return jsonify(message=f"{user.first_name} has been logged in"), 200
+        return jsonify(message=f"{user.first_name} has been logged in", user=user.serialize()), 200
     except Exception as e:
         print(f"Error when logging in: {e}")
         return jsonify(error=f"Error when logging in: {e}"), 500
