@@ -5,4 +5,4 @@ env/
 venv/
 .server-env/
 
-/server/.env
+.env
