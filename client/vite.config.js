@@ -18,6 +18,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/api": {
+        target: URL,
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

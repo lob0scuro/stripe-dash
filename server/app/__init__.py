@@ -18,6 +18,8 @@ def create_app(config_class=Config):
     app.register_blueprint(auth_bp)
     from app.read import bp as read_bp
     app.register_blueprint(read_bp)
+    from app.api import bp as api_bp
+    app.register_blueprint(api_bp)
     
     @login_manager.user_loader
     def load_user(id):
