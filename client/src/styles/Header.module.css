@@ -1,0 +1,8 @@
+.dashHeader {
+  width: 100%;
+  height: 5rem;
+  background-color: var(--primary);
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+}

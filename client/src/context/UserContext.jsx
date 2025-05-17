@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
-const UserProvider = createContext();
+const UserContext = createContext();
 
-export const UserContext = ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,11 +17,23 @@ export const UserContext = ({ children }) => {
     setLoading(false);
   }, []);
 
+  const logout = async () => {
+    const response = await fetch("/auth/logout");
+    const data = await response.json();
+    if (!response.ok) {
+      toast.error(data.error);
+    }
+    toast.success(data.message);
+    setUser(null);
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
   return (
-    <UserProvider.Provider value={{ user, setUser, loading }}>
+    <UserContext.Provider value={{ user, setUser, loading, logout }}>
       {children}
-    </UserProvider.Provider>
+    </UserContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(UserProvider);
+export const useAuth = () => useContext(UserContext);

@@ -4,8 +4,10 @@ import { fetchAllUsers } from "../Utils";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/UserContext";
 
 const Login = () => {
+  const { user, setUser } = useAuth();
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -43,6 +45,7 @@ const Login = () => {
         throw new Error(data.error);
       }
       toast.success(data.message);
+      setUser(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/");
     } catch (error) {

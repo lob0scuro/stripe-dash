@@ -1,25 +1,22 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/matts-logo.png";
 import { useAuth } from "../context/UserContext";
+import Button from "../components/Button";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   return (
     <nav>
-      <h1>
-        <span>
-          <img src={Logo} alt="" />
-        </span>
-        <span>Stripe Dashboard</span>
-      </h1>
+      <h1>Stripe Dashboard</h1>
       {user && (
         <div>
           <NavLink to="/">Home</NavLink>
-          <NavLink>Subscriptions</NavLink>
-          <NavLink>Staus</NavLink>
+          <NavLink to="/login">Subscriptions</NavLink>
+          <NavLink to="/register">Staus</NavLink>
         </div>
       )}
+      {user && <Button title="logout" onClick={() => logout()} />}
     </nav>
   );
 };
