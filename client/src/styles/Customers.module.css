@@ -1,0 +1,85 @@
+.customersMainBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 680px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--secondary),
+    var(--secondary)
+  );
+  padding: 0.3rem 0.8rem;
+}
+.customersMainBlock > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.addUserButton {
+  color: var(--text);
+  width: 25px;
+  height: 25px;
+  padding: 0.3rem;
+  border: 1.8px solid var(--text);
+  border-radius: 12px;
+}
+.addUserButton:hover {
+  color: var(--pink);
+  background-color: var(--primary);
+  border: 1.8px solid var(--pink);
+}
+.customersMainBlock h2 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.customersMainBlock h2:hover {
+  color: var(--green);
+}
+
+.customersMainBlock ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  gap: 10px;
+  width: 100%;
+  min-width: 300px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.customersMainBlock ul li {
+  background: var(--fore);
+  border-radius: 14px;
+  padding: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 18px;
+}
+
+.customersMainBlock ul li p:first-child {
+  font-weight: 700;
+  font-size: 18px;
+}
+.customersMainBlock ul li p:last-child {
+  margin-top: 6px;
+}
+
+.userInfoLink {
+  background-color: var(--secondary);
+  color: var(--green);
+  width: 40px;
+  height: 40px;
+  border-radius: 18px;
+  padding: 0.6rem;
+}
+.userInfoLink:hover {
+  background-color: var(--green);
+  color: var(--fore);
+}

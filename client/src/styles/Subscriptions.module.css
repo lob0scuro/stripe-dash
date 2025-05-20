@@ -1,0 +1,10 @@
+.productsBlock {
+  text-align: center;
+}
+
+.productsBlock ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+}

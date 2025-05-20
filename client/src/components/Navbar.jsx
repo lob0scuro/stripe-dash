@@ -12,8 +12,8 @@ const Navbar = () => {
       {user && (
         <div>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/login">Subscriptions</NavLink>
-          <NavLink to="/register">Staus</NavLink>
+          <NavLink to="/customers">Customers</NavLink>
+          <NavLink to="/subscriptions">Subscriptions</NavLink>
         </div>
       )}
       {user && <Button title="logout" onClick={() => logout()} />}

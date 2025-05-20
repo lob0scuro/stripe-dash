@@ -9,6 +9,10 @@ import ProtectedLayout from "./layout/ProtectedLayout";
 import Dashboard from "./routes/Dashboard";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
+import Subscriptions from "./routes/Subscriptions";
+import Customers from "./routes/Customers";
+import CustomerPage from "./routes/CustomerPage";
+import CreateCustomerForm from "./components/CreateCustomerForm";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -16,6 +20,10 @@ const App = () => {
       <Route path="/" element={<RootLayout />}>
         <Route element={<ProtectedLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="subscriptions" element={<Subscriptions />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="customer/:id" element={<CustomerPage />} />
+          <Route path="create-customer" element={<CreateCustomerForm />} />
         </Route>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />

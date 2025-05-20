@@ -24,3 +24,29 @@ export const fetchSubs = async () => {
     return { success: false, error: error.message };
   }
 };
+
+export const fetchOneCustomer = async (id) => {
+  try {
+    const response = await fetch(`/api/get_one_customer/${id}`);
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
+    return { success: true, customer: data.customer };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+export const fetchAllCustomers = async () => {
+  try {
+    const response = await fetch("/api/get_all_customers");
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
+    return { success: true, customers: data.customers || [] };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
