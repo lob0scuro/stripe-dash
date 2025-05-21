@@ -9,6 +9,29 @@ from os import environ
 
 stripe.api_key = environ.get("STRIPE_TEST_KEY")
 
+@bp.route("/get_current_balance", methods=["GET"])
+def get_current_balance():
+    try:
+        balance = stripe.Balance.retrieve()
+        return jsonify(balance=balance)
+    except stripe.error.InvalidRequestError as e:
+        print(f"Request Error: {e}")
+        return jsonify(error=f"Request Error: {e}"), 500
+    except stripe.error.AuthenticationError as e:
+        print(f"Authentication Error: {e}")
+        return jsonify(error=f"Authentication Error: {e}"), 500
+    except stripe.error.APIConnectionError as e:
+        print(f"API Connection Error: {e}")
+        return jsonify(error=f"API Connection Error: {e}"), 500
+    except stripe.error.StripeError as e:
+        print(f"Stripe Error: {e}")
+        return jsonify(error=f"Stripe Error: {e}"), 500
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify(error=f"Error: {e}"), 500
+    
+    
+
 @bp.route("/get_products", methods=["GET"])
 def get_products():
     try:

@@ -15,7 +15,7 @@
 }
 .customersMainBlock > div {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: 100%;
 }
@@ -28,9 +28,9 @@
   border-radius: 12px;
 }
 .addUserButton:hover {
-  color: var(--pink);
+  color: var(--green);
   background-color: var(--primary);
-  border: 1.8px solid var(--pink);
+  border: 1.8px solid var(--green);
 }
 .customersMainBlock h2 {
   text-decoration: underline;
