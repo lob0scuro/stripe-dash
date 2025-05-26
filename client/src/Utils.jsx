@@ -24,7 +24,7 @@ export const fetchAllUsers = async () => {
   }
 };
 
-export const fetchSubs = async () => {
+export const fetchProducts = async () => {
   try {
     const response = await fetch("/api/get_products");
     const data = await response.json();
@@ -33,6 +33,19 @@ export const fetchSubs = async () => {
     }
     console.log(data);
     return { success: true, products: data.products };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+export const fetchPrices = async () => {
+  try {
+    const response = await fetch("/api/get_prices");
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
+    return { success: true, prices: data.prices };
   } catch (error) {
     return { success: false, error: error.message };
   }

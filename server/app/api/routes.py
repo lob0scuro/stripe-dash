@@ -53,6 +53,27 @@ def get_products():
         print(f"Error: {e}")
         return jsonify(error=f"Error: {e}"), 500
     
+@bp.route("/get_prices", methods=['GET'])
+def get_prices():
+    try:
+        prices = stripe.Price.list
+        return jsonify(prices=prices.data), 200
+    except stripe.error.InvalidRequestError as e:
+        print(f"Request Error: {e}")
+        return jsonify(error=f"Request Error: {e}"), 500
+    except stripe.error.AuthenticationError as e:
+        print(f"Authentication Error: {e}")
+        return jsonify(error=f"Authentication Error: {e}"), 500
+    except stripe.error.APIConnectionError as e:
+        print(f"API Connection Error: {e}")
+        return jsonify(error=f"API Connection Error: {e}"), 500
+    except stripe.error.StripeError as e:
+        print(f"Stripe Error: {e}")
+        return jsonify(error=f"Stripe Error: {e}"), 500
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify(error=f"Error: {e}"), 500
+    
 @bp.route("/create_customer", methods=['POST'])
 def create_customer():
     data = request.get_json()

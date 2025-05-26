@@ -1,14 +1,14 @@
 import styles from "../styles/Subscriptions.module.css";
 import React, { useState, useEffect } from "react";
-import { fetchSubs } from "../Utils";
+import { fetchProducts } from "../Utils";
 import toast from "react-hot-toast";
 
-const Subscriptions = () => {
+const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const gittem = async () => {
-      const gottem = await fetchSubs();
+      const gottem = await fetchProducts();
       if (!gottem.success) {
         toast.error(gottem.error);
       }
@@ -23,9 +23,9 @@ const Subscriptions = () => {
       <h1>Extended Warranty Programs</h1>
       <ul>
         {products?.map(({ id, active, description, name, url }) => (
-          <li key={id} style={{ color: active ? "green" : "unset" }}>
+          <li key={id} style={{ color: !active ? "green" : "unset" }}>
             <p>{name}</p>
-            <p>{url}</p>
+            <p>{description}</p>
           </li>
         ))}
       </ul>
@@ -33,4 +33,4 @@ const Subscriptions = () => {
   );
 };
 
-export default Subscriptions;
+export default Products;
